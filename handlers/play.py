@@ -130,13 +130,13 @@ async def playlist(client, message):
     global que
     queue = que.get(message.chat.id)
     if not queue:
-        await message.reply_text('Player is idle')
+        await message.reply_text('Roma')
     temp = []
     for t in queue:
         temp.append(t)
     now_playing = temp[0][0]
     by = temp[0][1].mention(style='md')
-    msg = "**Now Playing** in {}".format(message.chat.title)
+    msg = "**Roma** in {}".format(message.chat.title)
     msg += "\n- "+ now_playing
     msg += "\n- Req by "+by
     temp.pop(0)
@@ -158,10 +158,10 @@ def updated_stats(chat, queue, vol=100):
         stats = 'Settings of **{}**'.format(chat.title)
         if len(que) > 0:
             stats += '\n\n'
-            stats += 'Volume : {}%\n'.format(vol)
-            stats += 'Songs in queue : `{}`\n'.format(len(que))
-            stats += 'Now Playing : **{}**\n'.format(queue[0][0])
-            stats += 'Requested by : {}'.format(queue[0][1].mention)
+            stats += 'Roma : {}%\n'.format(vol)
+            stats += 'Roma : `{}`\n'.format(len(que))
+            stats += 'Roma: **{}**\n'.format(queue[0][0])
+            stats += 'Roma : {}'.format(queue[0][1].mention)
     else:
         stats = None
     return stats
@@ -174,10 +174,10 @@ def r_ply(type_):
     mar = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton('⏹', 'leave'),
-                InlineKeyboardButton('⏸', 'puse'),
-                InlineKeyboardButton('▶️', 'resume'),
-                InlineKeyboardButton('⏭', 'skip')
+                InlineKeyboardButton('⏹', 'Roma'),
+                InlineKeyboardButton('⏸', 'Roma'),
+                InlineKeyboardButton('▶️', 'Roma'),
+                InlineKeyboardButton('⏭', 'Roma')
                 
             ],
             [
@@ -248,7 +248,7 @@ async def p_cb(b, cb):
         temp.pop(0)
         if temp:
              msg += '\n\n'
-             msg += '**Queue**'
+             msg += '**Roma**'
              for song in temp:
                  name = song[0]
                  usr = song[1].mention(style='md')
@@ -347,14 +347,14 @@ async def m_cb(b, cb):
         marr = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton('⏹', 'leave'),
-                    InlineKeyboardButton('⏸', 'puse'),
-                    InlineKeyboardButton('▶️', 'resume'),
-                    InlineKeyboardButton('⏭', 'skip')
+                    InlineKeyboardButton('⏹', 'Roma'),
+                    InlineKeyboardButton('⏸', 'Roma'),
+                    InlineKeyboardButton('▶️', 'Roma'),
+                    InlineKeyboardButton('⏭', 'Roma')
                 
                 ],
                 [
-                    InlineKeyboardButton('Playlist 📖', 'playlist'),
+                    InlineKeyboardButton('Roma 📖', 'playlist'),
                 
                 ],
                 [       
@@ -399,7 +399,7 @@ async def m_cb(b, cb):
 @Client.on_message(command("play") & other_filters)
 async def play(_, message: Message):
     global que
-    lel = await message.reply("🔄 **Processing**")
+    lel = await message.reply("🔄 **Roma**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -484,13 +484,13 @@ async def play(_, message: Message):
             [   
                 [
                                
-                    InlineKeyboardButton('📖 Playlist', callback_data='playlist'),
-                    InlineKeyboardButton('Menu ⏯ ', callback_data='menu')
+                    InlineKeyboardButton('📖 Roma', callback_data='playlist'),
+                    InlineKeyboardButton('Roma ⏯ ', callback_data='menu')
                 
                 ],                     
                 [
                     InlineKeyboardButton(
-                        text="Watch On YouTube 🎬",
+                        text="Romae 🎬",
                         url=f"{url}")
 
                 ],
@@ -548,7 +548,7 @@ async def play(_, message: Message):
 )
 async def deezer(client: Client, message_: Message):
     global que
-    lel = await message_.reply("🔄 **Processing**")
+    lel = await message_.reply("🔄 **Roma**")
     administrators = await get_administrators(message_.chat)
     chid = message_.chat.id
     try:
@@ -583,7 +583,7 @@ async def deezer(client: Client, message_: Message):
                           except Exception as e:
                               #print(e)
                               await lel.edit(
-                                  f"<b>🔴 Flood Wait Error 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
+                                  f"<b>🔴 Roma 🔴 \nUser {user.first_name} couldn't join your group due to heavy requests for userbot! Make sure user is not banned in group."
                                   "\n\nOr manually add @YouTubeMusicPlayerRoBot to your Group and try again</b>",
                               )
                               pass
@@ -611,25 +611,25 @@ async def deezer(client: Client, message_: Message):
         url = r[0]["url"]
     except:
         await res.edit(
-            "Found Literally Nothing, You Should Work On Your English!"
+            "Roma"
         )
         is_playing = False
         return
     keyboard = InlineKeyboardMarkup(
          [   
              [
-                 InlineKeyboardButton('📖 Playlist', callback_data='playlist'),
-                 InlineKeyboardButton('Menu ⏯ ', callback_data='menu')     
+                 InlineKeyboardButton('📖 Roma', callback_data='playlist'),
+                 InlineKeyboardButton('Roma ⏯ ', callback_data='menu')     
              ],                     
              [
                  InlineKeyboardButton(
-                     text="Listen On Deezer 🎬",
+                     text="Roma 🎬",
                      url=f"{url}")
 
              ],
              [       
                  InlineKeyboardButton(
-                     text="❌ Close",
+                     text="❌ Roma",
                      callback_data='cls')
 
             ]                      
@@ -752,17 +752,17 @@ async def jiosaavn(client: Client, message_: Message):
     keyboard = InlineKeyboardMarkup(
          [   
              [
-               InlineKeyboardButton('📖 Playlist', callback_data='playlist'),
-               InlineKeyboardButton('Menu ⏯ ', callback_data='menu')   
+               InlineKeyboardButton('📖 Roma', callback_data='playlist'),
+               InlineKeyboardButton('Roma ⏯ ', callback_data='menu')   
              ],                     
              [
                InlineKeyboardButton(
-                   text="Join Updates Channel",
+                   text="Roma",
                    url='https://t.me/MaharashtraTeam')
              ],
              [       
                InlineKeyboardButton(
-                   text="❌ Close",
+                   text="❌ Roma",
                    callback_data='cls')
 
             ]                          
